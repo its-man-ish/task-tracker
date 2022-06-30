@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import BlogList from "./Blogs"
 const Home = () => {
-    
+    const [name,setName] = useState("Manish")
     const [blogs,setBlogs]=useState([
          {
         title:"Naruto Uzumaki", 
@@ -22,14 +22,16 @@ const Home = () => {
       const  newBlogs = blogs.filter(blog=>blog.id!==id);
       setBlogs(newBlogs)
     }  
-
+  
     useEffect(()=>{
       console.log('use effect ran')
       console.log(blogs)
-    })
+    },[name])
     return (
       <div className="home">
         <BlogList blogs = {blogs} deleteBlog={deleteBlog} />
+        {name}
+        <button onClick={()=>setName("Chotu")}>Name</button>
       </div>
     );
   }
