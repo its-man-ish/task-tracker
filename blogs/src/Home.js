@@ -17,12 +17,14 @@ const Home = () => {
         id:2,
        }
     ]);
-    const handleBlogs =()=>{
-        setBlogs(0)
-    }    
+   
+    const deleteBlog= (id)=>{
+      const  newBlogs = blogs.filter(blog=>blog.id!==id);
+      setBlogs(newBlogs)
+    }  
     return (
       <div className="home">
-        <BlogList blogs = {blogs} />
+        <BlogList blogs = {blogs} deleteBlog={deleteBlog} />
       </div>
     );
   }
