@@ -1,18 +1,28 @@
 
 import { useState } from "react"
+import BlogList from "./Blogs"
 const Home = () => {
     
-    const [name,setName]=useState("Manish");
-    const handleClick=()=>{
-        setName("Rohit")
-    }
+    const [blogs,setBlogs]=useState([
+         {
+        title:"Naruto Uzumaki", 
+        body:"Guided by the spirit demon within him, Naruto learns to harness his powers as a ninja in this anime adventure series.",
+        author:"Masashi Kishimoto",
+        id:1,
+       },
+       {
+        title:"Death Note", 
+        body:"The story follows Light Yagami, a teen genius who discovers a mysterious notebook: the Death NOte.",
+        author:"Tsugumi Ohba ",
+        id:2,
+       }
+    ]);
+    const handleBlogs =()=>{
+        setBlogs(0)
+    }    
     return (
       <div className="home">
-        <h2>Homepage</h2>
-
-        <h1>{name}</h1>
-        <button onClick={handleClick}>Click</button>
-
+        <BlogList blogs = {blogs} />
       </div>
     );
   }
