@@ -1,9 +1,12 @@
 import {useState } from 'react'
+import { useHistory } from 'react-router-dom';
+
 const Create = ()=>{
    const [title,setTitle] = useState('');
    const [body,setBody] = useState('');
    const [genre,setGenre] = useState('');
    const [isPending, setIspending] = useState(false)
+   const history =useHistory();
 
 
     const handleSubmit = (e)=>{
@@ -19,6 +22,8 @@ const Create = ()=>{
       .then(()=>{
         console.log('new blog created');
         setIspending(false);
+        //redirecting to home page after creating new blog
+        history.push('/');
       })
 
        
