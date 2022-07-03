@@ -3,14 +3,31 @@ const Create = ()=>{
    const [title,setTitle] = useState('');
    const [body,setBody] = useState('');
    const [genre,setGenre] = useState('');
+   const [isPending, setIspending] = useState(false)
 
 
+    const handleSubmit = (e)=>{
+      e.preventDefault();
+      const newBlog = {title,genre,body};
 
+      setIspending(true);
+      fetch('http://localhost:8000/blogs',{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(newBlog)
+      })
+      .then(()=>{
+        console.log('new blog created');
+        setIspending(false);
+      })
+
+       
+    }
     return(
         <div className="create">
           <h3>Create a New Bog </h3>
 
-          <form action="">
+          <form onSubmit={handleSubmit}>
              <label htmlFor="">Blog title</label>
 
              <input 
@@ -38,7 +55,16 @@ const Create = ()=>{
             onChange={(e)=>setBody(e.target.value)}
             required
             ></textarea>
-            <button>Add Blog</button> <br />
+              <br />
+           {
+             !isPending &&  <button>Add Blog</button> 
+            
+           }
+         
+           {
+             isPending &&  <button>Creating....</button> 
+            
+           }
 
             
 
