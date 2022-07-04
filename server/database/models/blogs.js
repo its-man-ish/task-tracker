@@ -8,7 +8,7 @@ const blogSchema = new mongoose.Schema({
         type:String
     },
     body:{
-        type:Text
+        type:String
     },
     author:{
         type:String
@@ -19,4 +19,4 @@ const blogSchema = new mongoose.Schema({
 
 const blogDB = mongoose.model('blogs',blogSchema);
 
-export default blogDB
+module.exports= blogDB

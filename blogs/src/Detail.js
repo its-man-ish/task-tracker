@@ -7,10 +7,10 @@ const BlogDetails = ()=>{
     const {id} = useParams();
     const history = useHistory();
    
-    const {data:blog, error, isPending } = useFetch('http://localhost:8000/blogs/'+id);
+    const {data:blog, error, isPending } = useFetch('http://localhost:5000/blog/'+id);
     console.log("data: ",blog)
     const handleDelete=()=>{
-        fetch('http://localhost:8000/blogs/'+blog.id,{
+        fetch('http://localhost:5000/blog/'+blog._id,{
             method:"DELETE"
         })
         .then(()=>{
